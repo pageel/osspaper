@@ -36,7 +36,13 @@ function validateFrontmatter(filePath) {
   
   const categoryMatch = yamlString.match(/category:\s*"?([^"\n]+)"?/);
   const domainMatch = yamlString.match(/domain:\s*"?([^"\n]+)"?/);
+  const languageMatch = yamlString.match(/language:\s*"?([a-z]{2})"?/);
   
+  if (!languageMatch) {
+    console.error(`❌ [ERROR] Missing or invalid 'language' field in ${filePath}. Must be a 2-letter code (e.g., "en", "vi").`);
+    hasError = true;
+  }
+
   if (categoryMatch) {
     const category = categoryMatch[1];
     if (!taxonomy.categories.includes(category)) {
