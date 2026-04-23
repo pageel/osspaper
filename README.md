@@ -1,4 +1,5 @@
 <div align="center">
+  <img src="./public/logo.svg" alt="OSSPaper Logo" width="120" />
   <h1>OSSPaper</h1>
   <p>An Open Source Scholarly Publishing Platform powered by Astro and Agentic AI.</p>
 </div>
