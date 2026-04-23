@@ -1,0 +1,12 @@
+{
+  "name": "osspaper",
+  "version": "1.0.0",
+  "description": "An Open Source Scholarly Publishing Platform powered by Astro and Agentic AI",
+  "scripts": {
+    "test:safety": "node scripts/check-safety.js",
+    "test:frontmatter": "node scripts/validate-frontmatter.js",
+    "test": "npm run test:safety && npm run test:frontmatter"
+  },
+  "author": "OSSPaper Contributors",
+  "license": "MIT"
+}

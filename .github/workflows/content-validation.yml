@@ -1,0 +1,41 @@
+name: Content Validation Gate
+
+on:
+  pull_request:
+    paths:
+      - 'content/authors/**'
+
+jobs:
+  validate:
+    name: Safety and Frontmatter Checks
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Đảm bảo tải đủ lịch sử git để so sánh Diff
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Ensure PR Isolation
+        run: |
+          # Kiểm tra bảo mật: Author CHỈ ĐƯỢC PHÉP sửa file trong thư mục của họ
+          git fetch origin main
+          CHANGED_FILES=$(git diff --name-only origin/main...HEAD)
+          for FILE in $CHANGED_FILES; do
+            if [[ ! "$FILE" == content/authors/* ]]; then
+              echo "::error file=$FILE::Bảo mật: PR có chứa file nằm ngoài thư mục content/authors/. Hãy gỡ bỏ các thay đổi này."
+              exit 1
+            fi
+          done
+          echo "Isolation Check Passed!"
+          
+      - name: Run Safety Check (Image Size & Malicious Tags)
+        run: npm run test:safety
+        
+      - name: Run Frontmatter & Taxonomy Check
+        run: npm run test:frontmatter
