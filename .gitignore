@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+.next/
+.astro/
+
+# Platform-specific
+.vercel/
+.wrangler/
+
+# Environment files (CRITICAL - secrets)
+.env
+.env.local
+.env.*.local
+*.local
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
