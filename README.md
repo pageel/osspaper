@@ -13,6 +13,16 @@ Writers can publish their papers and ebooks without learning complex CMS systems
 1. **Technical Gate (GitHub Actions):** Automatically enforces file size limits (<= 500KB images), file extensions, and anti-XSS security.
 2. **Cognitive Gate (Antigravity AI):** AI Agents review pull requests against academic standards.
 
+## Library Statistics
+
+*Current Document Count:*
+
+| Category | Count |
+| :--- | :--- |
+| **Research Papers** | 1 |
+| **Ebooks** | 3 |
+| **Total** | **4** |
+
 ## Contributing
 
 Please read the [CONTRIBUTING.md](CONTRIBUTING.md) guide before submitting your paper or ebook.
